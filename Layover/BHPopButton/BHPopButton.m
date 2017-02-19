@@ -21,7 +21,7 @@
 
 - (void)setOnClickBlock:(void (^)(BHPopButton *view))block
 {
- clickBlock = block;
+  clickBlock = block;
 }
 
 - (void)setOnLongPressBlock:(void (^)(BHPopButton *view))block
@@ -29,6 +29,13 @@
 
   longPressBlock = block;
   
+}
+
+- (void)setOnSubItemSelected:(void (^)(BHPopButton *, NSUInteger, NSString *))block
+{
+    
+  selectBlock = block;
+    
 }
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -60,7 +67,7 @@
  
   pressed = NO;
  
- self.alpha = 1.0f;
+  self.alpha = 1.0f;
   
 }
 
@@ -101,6 +108,12 @@
             [self showSubOptionView];
             
         }
+        
+        if (longPressBlock) {
+            
+            longPressBlock(self);
+            
+        }
      
     }
     
@@ -129,7 +142,7 @@
     
     [Aview setUpInsideBlock:^(BHPopView *view,UILabel *labelSelected) {
         
-        if (selectBlock) {
+        if (selectBlock && labelSelected) {
             
             selectBlock(self,labelSelected.tag,labelSelected.text);
             

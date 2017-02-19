@@ -17,30 +17,31 @@ typedef void(^ItemSelectedBlock)(BHPopButton *view,NSUInteger index,NSString *it
 @interface BHPopButton : UIButton
 {
   
-  BOOL pressed;
+    BOOL pressed;
   
-  EventBlock longPressBlock;
+    EventBlock longPressBlock;
     
-  EventBlock clickBlock;
+    EventBlock clickBlock;
     
     ItemSelectedBlock selectBlock;
   
-  NSDate *lastClickDate;
+    NSDate *lastClickDate;
     
     UIView *_popView;
   
 }
 
+/*设置长按操作被触发后调用的Block*/
 - (void)setOnLongPressBlock:(void (^)(BHPopButton *view))block;
-
+/*设置用户弹起手势后调用的Block*/
 - (void)setOnSubItemSelected:(void (^)(BHPopButton *view,NSUInteger index,NSString *itemContent))block;
-
+/*设置用户弹单击后调用的Block*/
 - (void)setOnClickBlock:(void (^)(BHPopButton *view))block;
-
+/*次级选项的文本数组*/
 @property (nonatomic,strong) NSArray *optionsArray;
-
+/*长按触发子菜单弹出所需要的时间间隔*/
 @property (nonatomic) NSTimeInterval longPressTimeInterval;
-
+/*次级选项的文本字体*/
 @property (nonatomic,strong) UIFont *fontForOptions;
 
 @end

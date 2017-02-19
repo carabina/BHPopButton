@@ -20,41 +20,31 @@
   // Do any additional setup after loading the view, typically from a nib.
     
     
+    
     [bottomView setTitle:@"gggg" forState:UIControlStateNormal];
   
-    bottomView.optionsArray = @[@"A",@"B",@"C"];
+    bottomView.optionsArray = @[@"A",@"B",@"C",@"ABC",@"Congo"];
     
-//  [bottomView setOnLongPressBlock:^(BHPopButton *view) {
-//    
-//    BHPopView *Aview = [[BHPopView alloc]initWithFrame:CGRectMake(100, 90, 100, 200)];
-//    
-//    Aview.center = bottomView.center;
-//      
-//      Aview.chars = @[@"A",@"B",@"C"];
-//    
-//    Aview.backgroundColor = [UIColor redColor];
-//      
-//      [Aview sizeToFit];
-//    
-//    view.popView = Aview;
-//      
-//      [Aview setUpInsideBlock:^(BHPopView *view,UILabel *labelSelected) {
-//          
-//          NSLog(@"起来了,选中%@",labelSelected.text);
-//          
-//      }];
-//    
-//    [self.view addSubview:Aview];
-//    
-//    
-//  }];
-    
+    [bottomView setOnSubItemSelected:^(BHPopButton *view, NSUInteger index, NSString *itemContent) {
+        
+        if (itemContent) {
+            
+            _textField.text = [_textField.text stringByAppendingString:itemContent];
+ 
+        }
+        
+    }];
     
     [bottomView setOnClickBlock:^(BHPopButton *view) {
         
         NSLog(@"点击了 %@",view.titleLabel.text);
         
     }];
+    
+    
+
+    
+    
 }
 
 

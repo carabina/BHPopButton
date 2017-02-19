@@ -38,12 +38,12 @@
     
     [_charLabels removeAllObjects];
     
-    for (NSString *string in chars) {
+    [chars enumerateObjectsUsingBlock:^(NSString   * _Nonnull string, NSUInteger idx, BOOL * _Nonnull stop) {
         
         UILabel *label = [UILabel new];
         
         if (_fontForOptions) {
-        
+            
             label.font = _fontForOptions;
             
         }
@@ -51,10 +51,12 @@
         {
             
             label.font = [UIFont fontWithName:@"Arial" size:20.0f];
-
+            
         }
         
         label.text = string;
+        
+        label.tag = idx;
         
         label.textAlignment = NSTextAlignmentCenter;
         
@@ -67,8 +69,8 @@
         label.bounds = CGRectMake(0.0f, 0.0f, label.frame.size.width + 4.0F, label.frame.size.height + 5.0f);
         
         [_charLabels addObject:label];
-        
-    }
+
+    }];
     
 }
 
@@ -122,9 +124,7 @@
 -(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
   [super touchesBegan:touches withEvent:event];
-  
-//  NSLog(@"touches Began");
-  
+    
 }
 
 -(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -136,6 +136,9 @@
     CGFloat x_off_set = MAX(0.0, MIN(self.bounds.size.width, point.x));
 
     //找出第一个不
+    
+    labelSelected = nil;
+    
     for (UILabel *label in _charLabels) {
         
         if (label.frame.origin.x < x_off_set && ((label.frame.origin.x + label.frame.size.width + X_GAP) > x_off_set)) {
@@ -158,7 +161,6 @@
 {
   return self;
 }
-
 
 -(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {

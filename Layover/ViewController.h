@@ -13,6 +13,7 @@
 {
   __weak IBOutlet BHPopButton *bottomView;
   
+    __weak IBOutlet UITextField *_textField;
 }
 
 @end
