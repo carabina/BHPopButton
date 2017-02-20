@@ -134,8 +134,6 @@
     CGPoint point = [[event.allTouches anyObject]locationInView:self];
     
     CGFloat x_off_set = MAX(0.0, MIN(self.bounds.size.width, point.x));
-
-    //找出第一个不
     
     labelSelected = nil;
     

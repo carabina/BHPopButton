@@ -25,8 +25,6 @@ typedef void(^touchUpBlock)(BHPopView *view,UILabel *labelSelected);
 
 @property (nonatomic,strong) UIFont *fontForOptions;
 
-+(BHPopView *)currentInstance;
-
 -(void)setUpInsideBlock:(void (^)(BHPopView *view,UILabel *labelSelected))block;
 
 @end
