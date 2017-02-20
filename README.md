@@ -2,8 +2,7 @@
 Button With Pop OptionView<br>
 在CocoaTouch上实现了模仿各主流输入法弹出可弹出扩展选项菜单功能的Button控件<br>
 ##效果图
-![](http://image18-c.poco.cn/mypoco/myphoto/20170220/01/18416359820170220010110060.jpg)
-![](http://image18-c.poco.cn/mypoco/myphoto/20170220/01/18416359820170220014057077.jpg)
+![](http://i.niupic.com/images/2017/02/20/VApNpv.gif)
 ##使用方法
 ```Objective-C
     BHPopButton *popButton = [BHPopButton buttonWithType:UIButtonTypeCustom];
